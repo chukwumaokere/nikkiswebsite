@@ -12,16 +12,19 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-[Reference: Sam Selikoff: Improving developer and user experience with nested layouts in Next.js](https://www.youtube.com/watch?v=6mQ3M1CUGnk)
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.  
+
+[Reference: Sam Selikoff: Improving developer and user experience with nested layouts in Next.js](https://www.youtube.com/watch?v=6mQ3M1CUGnk)  
+
 [API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
 
 The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
 
 ## Adjusting schema
-If you change `prisma/schema.prisma` be sure to run `npx prisma generate typescript-client` and then `Restart TS Server` in VSCode to update type definitions.
-[Reference: Amy Dutton: How Next.js and Prisma make frontend developers full-stack](https://www.youtube.com/watch?v=quNLtK7hWYs)
+If you change `prisma/schema.prisma` be sure to run `npx prisma generate typescript-client` and then `Restart TS Server` in VSCode to update type definitions.  
+[Reference: Amy Dutton: How Next.js and Prisma make frontend developers full-stack](https://www.youtube.com/watch?v=quNLtK7hWYs)  
+
 
 ## Learn More
 
