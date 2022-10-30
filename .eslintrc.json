@@ -1,3 +1,117 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": "next/core-web-vitals",
+  "rules": {
+    "array-bracket-newline": [
+        "error",
+        {
+            "multiline": true
+        }
+    ],
+    "brace-style": [
+        "error",
+        "1tbs"
+    ],
+    "camelcase": [
+        "error",
+        {
+            "properties": "never"
+        }
+    ],
+    "comma-dangle": [
+        "error",
+        "always-multiline"
+    ],
+    "comma-spacing": [
+        "error"
+    ],
+    "comma-style": [
+        "error"
+    ],
+    "curly": [
+        "error"
+    ],
+    "eol-last": [
+        "error",
+        "always"
+    ],
+    "eqeqeq": [
+        "error",
+        "always"
+    ],
+    "indent": [
+        "error",
+        4,
+        {
+            "SwitchCase": 1
+        }
+    ],
+    "keyword-spacing": [
+        "error",
+        {
+            "before": true,
+            "after": true
+        }
+    ],
+    "key-spacing": [
+        "error",
+        {
+            "beforeColon": false,
+            "afterColon": true,
+            "mode": "strict"
+        }
+    ],
+    "no-multi-spaces": [
+        "error"
+    ],
+    "no-trailing-spaces": [
+        "error"
+    ],
+    "no-var": [
+        "error"
+    ],
+    "object-curly-newline": [
+        "error",
+        {
+            "consistent": true
+        }
+    ],
+    "prefer-const": [
+        "error"
+    ],
+    "quotes": [
+        "error",
+        "single",
+        {
+            "avoidEscape": true
+        }
+    ],
+    "react/jsx-no-bind": [
+        "error",
+        {
+            "allowArrowFunctions": false
+        }
+    ],
+    "react/prop-types": [
+        "off"
+    ],
+    "semi": [
+        "error",
+        "always"
+    ],
+    "space-before-blocks": [
+        "error",
+        "always"
+    ],
+    "space-before-function-paren": [
+        "error",
+        "always"
+    ],
+    "space-in-parens": [
+        "error",
+        "never"
+    ],
+    "space-infix-ops": [
+        "error"
+    ]
+  }
 }

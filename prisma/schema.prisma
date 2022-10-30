@@ -1,0 +1,78 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model Collection {
+    id String @id @default(auto()) @map("_id") @db.ObjectId
+    name String?
+    slug String?
+    collectionImage String?
+    products Product[]
+    images Image[]
+    tags Tag[]
+    discount Discount?
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}
+
+model Product {
+    id String @id @default(auto()) @map("_id") @db.ObjectId
+    name String
+    slug String?
+    description String?
+    visible Boolean? @default(true)
+    productImage String?
+    price Float @default(0.00)
+    stackable Boolean? @default(true)
+    discount Discount?
+    tags Tag[]
+    images Image[]
+    collection Collection? @relation(fields: [collectionId], references: [id])
+    collectionId String? @db.ObjectId
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}
+
+model SitewideSale {
+    id String @id @default(auto()) @map("_id") @db.ObjectId
+    discount Discount
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}
+
+model Coupon {
+    id String @id @default(auto()) @map("_id") @db.ObjectId
+    code String
+    discount Discount
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}
+
+type Image { 
+    url String
+}
+
+type Tag {
+    name String
+}
+
+type Discount {
+    value Int
+    discountType DiscountType @default(PERCENTAGE)
+    active Boolean @default(false)
+    startDate DateTime @default(now())
+    endDate DateTime?
+}
+
+enum DiscountType {
+    PERCENTAGE
+    DOLLAR
+}
