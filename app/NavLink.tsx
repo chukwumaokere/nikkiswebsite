@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useSelectedLayoutSegment } from 'next/navigation';
+import { useSelectedLayoutSegments } from 'next/navigation';
 
 type Props = {
     href: string;
@@ -9,7 +9,8 @@ type Props = {
 }
 
 export default function NavLink ({href, children}: Props) {
-    const segment = useSelectedLayoutSegment() || '';
+    const layoutSegments = useSelectedLayoutSegments();
+    const segment = layoutSegments[0] || '';
     const active = href === `/${segment}`;
 
     return <Link className={

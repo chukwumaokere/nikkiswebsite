@@ -18,6 +18,9 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
+
+## Adjusting schema
+If you change `prisma/schema.prisma` be sure to run `npx prisma generate typescript-client` and then `Restart TS Server` in VSCode to update type definitions.
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
