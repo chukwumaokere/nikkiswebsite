@@ -1,4 +1,4 @@
-import './globals.css';
+import '@/styles/main.css';
 import { Comfortaa } from '@next/font/google';
 import NavLink from './NavLink';
 import classNames from 'classnames';
