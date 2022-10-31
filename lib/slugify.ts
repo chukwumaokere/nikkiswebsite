@@ -1,19 +1,12 @@
-type SlugOptions = {
-    replacement: string;
-    lower: boolean;
-    strict: boolean;
-    trim: boolean;
-};
-
-interface ISlugOptions extends SlugOptions {
-    replacement: '-',
+interface ISlugOptions {
+    replacement: string,
     lower: true,
     strict: true,
     trim: true
 }
 
 export default function slugify (path: string, slugOptions: ISlugOptions): String {
-    let slug = path.replace(/ /g, slugOptions?.replacement);
+    let slug = path.replace(/ /g, slugOptions?.replacement || '-');
     if (slugOptions.lower) {
         slug = slug.toLowerCase();
     }
