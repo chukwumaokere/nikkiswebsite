@@ -10,37 +10,44 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+// An Art collection. Typically a collection of products for a season or period of time.
 model Collection {
     id String @id @default(auto()) @map("_id") @db.ObjectId
     name String?
     slug String?
-    collectionImage String?
+    collectionImage Image?
     products Product[]
     images Image[]
     tags Tag[]
-    discount Discount?
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
-}
 
+    // Optional Relational Data for a Collection. This is the highest grouping of items.
+    discount Discount?
+}
+//An individual product being sold within a collection. Can be multi item or single item.
 model Product {
     id String @id @default(auto()) @map("_id") @db.ObjectId
     name String
     slug String?
     description String?
     visible Boolean? @default(true)
-    productImage String?
+    productImage Image?
     price Float @default(0.00)
     stackable Boolean? @default(true)
     discount Discount?
     tags Tag[]
     images Image[]
-    collection Collection? @relation(fields: [collectionId], references: [id])
-    collectionId String? @db.ObjectId
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
+
+    // Optional Relational Data for a Product. 
+    // A product can be a member of a collection order at any time.
+    collection Collection? @relation(fields: [collectionId], references: [id])
+    collectionId String? @db.ObjectId
 }
 
+// A sitewide sale. If this is active, all items on the site will be on sale for a specified amount off and time.
 model SitewideSale {
     id String @id @default(auto()) @map("_id") @db.ObjectId
     discount Discount
@@ -48,6 +55,7 @@ model SitewideSale {
     updatedAt DateTime @updatedAt
 }
 
+// A coupon. These can be one off coupons, seasonal coupons, event coupons like for "Night Market Discount".
 model Coupon {
     id String @id @default(auto()) @map("_id") @db.ObjectId
     code String
@@ -56,12 +64,76 @@ model Coupon {
     updatedAt DateTime @updatedAt
 }
 
+// An order record. This is after a purchase is completed. Can be used for receipt of order or for order fulfillment.
+model Order {
+    id String @id @default(auto()) @map("_id") @db.ObjectId
+    items Item[]
+    status OrderStatus @default(CREATED)
+    notes String?
+    trackingUrl String?
+    total Float
+    customer Customer? @relation(fields: [customerId], references: [id])
+    customerId String? @db.ObjectId
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    // Optional Relational Data for an Order. An order can have a coupon applied or a previous discount applied autoamtically.
+    // This is mostly for transparency in case we want to give a user a refund coupon for future orders for customer service
+    coupon Boolean?
+    couponDetails CouponDetails?
+    discount Boolean?
+    discountDetails Discount?
+}
+
+// A cart record. This is created when a user opens the store and holds an array of Product records. A user can only have 1 cart
+model Cart {
+    id String @id @default(auto()) @map("_id") @db.ObjectId
+    items Item[]
+    belongsTo Customer? @relation(fields: [customerId], references: [id])
+    subtotal Float? @default(0.00)
+    customerId String? @db.ObjectId @unique
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}
+
+// A customer record. This is created when a user opens the store and since there is no login, a user has a fingerprint UUID sent to the browser to track
+// A customer can have a list of orders and a cart.
+// If a customer clears their data, they can retrieve order information from an email/phone number combo
+model Customer {
+    id String @id @default(auto()) @map("_id") @db.ObjectId
+    name String?
+    address String?
+    phone String?
+    email String?
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    // Optional Relational Data for a Customer. A customer can have a cart with products in it, and can have a list of orders.
+    orders Order[]
+    cart Cart? 
+}
+
+// Type definitions
+
+type Item {
+    productId String
+    productImage Image
+    name String
+    description String?
+    quantity Int
+    price Float
+}
 type Image { 
     url String
 }
 
 type Tag {
     name String
+}
+
+type CouponDetails {
+    code String
+    discount Discount
 }
 
 type Discount {
@@ -75,4 +147,18 @@ type Discount {
 enum DiscountType {
     PERCENTAGE
     DOLLAR
+}
+
+enum OrderStatus { 
+    CREATED
+    RECEIVED
+    IN_PROGRESS
+    SHIPPED
+    IN_TRANSIT
+    DECLINED
+    CANCELLED
+    REFUNDED
+    FEEDBACK_REQUESTED
+    AWAITING_FEEDBACK
+    COMPLETED
 }

@@ -1,10 +1,12 @@
 import './globals.css';
-import { Comfortaa } from '@next/font/google';
+import { Mandali } from '@next/font/google';
 import NavLink from './NavLink';
 import classNames from 'classnames';
+import './layout.css';
 
-const comfortaa = Comfortaa({
+const mandali = Mandali({
     subsets: ['latin'],
+    weight: '400',
 });
 
 export default function RootLayout ({
@@ -12,7 +14,7 @@ export default function RootLayout ({
 }: {
   children: React.ReactNode
 }) {
-    const styles = classNames(comfortaa.className, 'bg-gray-900 text-gray-100 antialiased');
+    const styles = classNames(mandali.className, 'bg-gray-900 text-gray-100 antialiased');
     return (
         <html lang="en" className={styles}>
             <head>
@@ -21,15 +23,17 @@ export default function RootLayout ({
                 <link rel="icon" href="/favicon.ico" />
             </head>
             <body>
-                <header className='border-b p-4'>
-                    <nav className='flex flex-row space-x-4'>
-                        <NavLink href='/'>Home</NavLink>
-                        <NavLink href='/shop'>Shop</NavLink>
-                        <NavLink href='/gallery'>Gallery</NavLink>
-                    </nav>
-                </header>
-                <div className='p-4'>
-                    {children}
+                <div className={'background'}>
+                    <header className='p-4'>
+                        <nav className='flex flex-row justify-center space-x-4'>
+                            <NavLink href='/'>Home</NavLink>
+                            <NavLink href='/shop'>Shop</NavLink>
+                            <NavLink href='/gallery'>Gallery</NavLink>
+                        </nav>
+                    </header>
+                    <div className='p-4'>
+                        {children}
+                    </div>
                 </div>
             </body>
         </html>

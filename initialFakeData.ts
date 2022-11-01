@@ -6,7 +6,9 @@ async function main () {
         data: {
             name: 'Fall 2022',
             slug: 'fall-2022',
-            collectionImage: 'https://placeimg.com/640/480/nature',
+            collectionImage: {
+                url: 'https://placeimg.com/640/480/nature',
+            },
             images: [
                 {url: 'https://placeimg.com/320/160/nature'},
                 {url: 'https://placeimg.com/320/160/arch'},
@@ -25,6 +27,9 @@ async function main () {
                             name: 'Kiriko Sticker',
                             description: 'A sticker from the Overwatch Character Kiriko',
                             slug: 'kiriko-sticker',
+                            productImage: {
+                                url: 'https://liquipedia.net/commons/images/3/30/Kiriko_announcement.jpg',
+                            },
                             images: [
                                 {url: 'https://liquipedia.net/commons/images/3/30/Kiriko_announcement.jpg'},
                                 {url: 'https://upload.wikimedia.org/wikipedia/en/thumb/d/dd/Kiriko_Overwatch.png/220px-Kiriko_Overwatch.png'},
@@ -41,6 +46,9 @@ async function main () {
                             name: 'Lucio Sticker',
                             description: 'A sticker from the Overwatch Character Lucio',
                             slug: 'lucio-sticker',
+                            productImage: {
+                                url: 'https://images.blz-contentstack.com/v3/assets/blt2477dcaf4ebd440c/blt77c5cddf632a67d7/631a8b2bf581050de0035dee/1600_Lucio.jpg',
+                            },
                             images: [
                                 {url: 'https://static.wikia.nocookie.net/overwatch_gamepedia/images/8/8c/Lucio-portrait.png/revision/latest?cb=20160620004212'},
                                 {url: 'https://images.blz-contentstack.com/v3/assets/blt2477dcaf4ebd440c/blt77c5cddf632a67d7/631a8b2bf581050de0035dee/1600_Lucio.jpg'},
