@@ -8,6 +8,6 @@ const comfortaa = Comfortaa({
     weight: '700',
 });
 
-export default function Header ({children, className}: {children: React.ReactNode, className: any}): React.ReactElement {
+export default function Header ({children, className}: {children: React.ReactNode, className?: any}): React.ReactElement {
     return (<h1 className={classNames(comfortaa.className, 'text-2xl', className)}>{children}</h1>);
 }
