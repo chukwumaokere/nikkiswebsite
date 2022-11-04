@@ -2,7 +2,14 @@ import React, { use } from 'react';
 import prisma from '@/lib/db';
 import Link from 'next/link';
 import Image from 'next/image';
-import Subheader from '../Subheader';
+import Subheader from '@/app/Subheader';
+
+export const dynamic = 'auto',
+    dynamicParams = true,
+    revalidate = 0,
+    fetchCatche = 'auto',
+    runtime = 'nodejs',
+    preferredRegion = 'auto';
 
 async function getCollections () {
     const collections = await prisma.collection.findMany();

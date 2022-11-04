@@ -9,19 +9,16 @@ const nextConfig = {
             {
                 protocol: 'https',
                 hostname: 'placeimg.com',
-                port: '',
                 pathname: '/**/**',
             },
             {
                 protocol: 'https',
                 hostname: 'liquipedia.net',
-                port: '',
                 pathname: '/commons/images/**',
             },
             {
                 protocol: 'https',
                 hostname: 'images.blz-contentstack.com',
-                port: '',
                 pathname: '/v3/assets/**',
             },
         ],
