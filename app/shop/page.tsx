@@ -33,10 +33,7 @@ export default function Page () {
                     <Subheader>Collections</Subheader>
                     <div className='flex flex-col lg:flex-row'>
                         {collections.map((collection) => (
-                            <Link key={collection.id} href={{
-                                pathname: '/shop/collections/[slug]',
-                                query: { slug: collection.slug},
-                            }}>
+                            <Link key={collection.id} href={`/shop/collections/${collection.slug}`}>
                                 <Image
                                     width={200}
                                     height={100}
@@ -50,10 +47,7 @@ export default function Page () {
                     <Subheader>Products</Subheader>
                     <div className='flex flex-col lg:flex-row'>
                         {products.map((product) => (
-                            <Link key={product.id} href={{
-                                pathname: '/shop/products/[slug]',
-                                query: { slug: product.slug },
-                            }}>
+                            <Link key={product.id} href={`/shop/products/${product.slug}`}>
                                 <Image
                                     width={200}
                                     height={100}
