@@ -1,8 +1,8 @@
-import './globals.css';
+/* eslint-disable @next/next/no-head-element */
+import '@/app/globals.css';
 import { Mandali } from '@next/font/google';
-import NavLink from './NavLink';
 import classNames from 'classnames';
-import './layout.css';
+import '@/app/layout.css';
 
 const mandali = Mandali({
     subsets: ['latin'],
@@ -18,23 +18,11 @@ export default function RootLayout ({
     return (
         <html lang="en" className={styles}>
             <head>
-                <title>Nikkst3rz Art</title>
                 <meta name="description" content="Niki's Art" />
                 <link rel="icon" href="/favicon.ico" />
             </head>
             <body>
-                <div className={'background'}>
-                    <header className='p-4'>
-                        <nav className='flex flex-row justify-center space-x-4'>
-                            <NavLink href='/'>Home</NavLink>
-                            <NavLink href='/shop'>Shop</NavLink>
-                            <NavLink href='/gallery'>Gallery</NavLink>
-                        </nav>
-                    </header>
-                    <div className='p-4'>
-                        {children}
-                    </div>
-                </div>
+                {children}
             </body>
         </html>
     );

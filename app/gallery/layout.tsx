@@ -11,8 +11,8 @@ export default function Layout ({
             <header className='p-4'>
                 <nav className='flex flex-row justify-center space-x-4'>
                     <NavLink href='/'>Home</NavLink>
-                    <NavLink href='/shop' className='underline'>Shop</NavLink>
-                    <NavLink href='/gallery'>Gallery</NavLink>
+                    <NavLink href='/shop'>Shop</NavLink>
+                    <NavLink href='/gallery' className='underline'>Gallery</NavLink>
                 </nav>
             </header>
             <div className='p-4 w-full h-full'>

@@ -28,15 +28,17 @@ export default function Page () {
 
     if (collections.length > 0) {
         return (
-            <div>
+            <div className='h-full flex lg:flex-col'>
                 <div className='flex flex-col'>
                     <Subheader>Collections</Subheader>
-                    <div className='flex flex-col lg:flex-row'>
+                    <div className='flex flex-col lg:flex-row gap-2 h-full'>
                         {collections.map((collection) => (
-                            <Link key={collection.id} href={`/shop/collections/${collection.slug}`}>
+                            <Link key={collection.id} href={`/shop/collections/${collection.slug}`} className='relative w-28 h-28'>
                                 <Image
-                                    width={200}
-                                    height={100}
+                                    style={{objectFit: 'contain'}}
+                                    sizes='(max-width: 768px) 100vw, 50vw'
+                                    priority
+                                    fill
                                     alt={`${collection.name} collection image`}
                                     src={collection.collectionImage?.url || ''} />
                             </Link>
@@ -45,12 +47,14 @@ export default function Page () {
                 </div>
                 <div className='flex flex-col'>
                     <Subheader>Products</Subheader>
-                    <div className='flex flex-col lg:flex-row'>
+                    <div className='flex flex-col lg:flex-row gap-2 h-full'>
                         {products.map((product) => (
-                            <Link key={product.id} href={`/shop/products/${product.slug}`}>
+                            <Link key={product.id} href={`/shop/products/${product.slug}`} className='relative w-28 h-28'>
                                 <Image
-                                    width={200}
-                                    height={100}
+                                    style={{objectFit: 'contain'}}
+                                    sizes='(max-width: 768px) 100vw, 50vw'
+                                    priority
+                                    fill
                                     alt={`${product.name} product image`}
                                     src={product.productImage?.url || ''} />
                             </Link>

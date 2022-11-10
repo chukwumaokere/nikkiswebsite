@@ -1,3 +1,4 @@
+import Header from '@/app/Header';
 import prisma from '@/lib/db';
 import { use } from 'react';
 
@@ -15,11 +16,12 @@ export default function Page ({params}: {
         slug: string;
     };
 }) {
+
     const collection = use(getCollection(params.slug));
-    console.log(collection);
+
     return (
-        <h1 className='text-3xl text-yellow-500'>
-            {collection?.name} Collection
-        </h1>
+        <>
+            <Header>{collection?.name} Collection</Header>
+        </>
     );
 }

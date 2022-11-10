@@ -1,19 +1,19 @@
 'use client';
 
+import classNames from 'classnames';
 import Link from 'next/link';
-import { useSelectedLayoutSegments } from 'next/navigation';
+import { useSelectedLayoutSegment } from 'next/navigation';
 
 type Props = {
     href: string;
-    children: React.ReactNode
+    className?: string;
+    children: React.ReactNode;
 }
 
-export default function NavLink ({href, children}: Props) {
-    const layoutSegments = useSelectedLayoutSegments();
-    const segment = layoutSegments[0] || '';
+export default function NavLink ({href, children, className}: Props) {
+
+    const segment = useSelectedLayoutSegment() ?? '';
     const active = href === `/${segment}`;
 
-    return <Link className={
-        active ? '!underline' : ''
-    } href={href}>{children}</Link>;
+    return <Link className={classNames(className)} href={href}>{children}</Link>;
 };
