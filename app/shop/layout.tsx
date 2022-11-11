@@ -7,7 +7,7 @@ export default function Layout ({
   children: React.ReactNode
 }) {
     return (
-        <div className='background w-full h-full flex lg:flex-col'>
+        <div className='background w-full min-h-full h-auto flex lg:flex-col'>
             <header className='p-4'>
                 <nav className='flex flex-row justify-center space-x-4'>
                     <NavLink href='/'>Home</NavLink>

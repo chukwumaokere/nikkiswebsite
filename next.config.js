@@ -2,6 +2,7 @@
 const nextConfig = {
     experimental: {
         appDir: true,
+        serverComponentsExternalPackages: ['@prisma/client'],
     },
     trailingSlash: false,
     images: {

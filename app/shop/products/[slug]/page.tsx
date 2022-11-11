@@ -1,6 +1,6 @@
 'use client';
 
-import { use } from 'react';
+import { use, useMemo } from 'react';
 
 const fetchSomething = async () => {
     return new Promise((resolve, reject) => {
@@ -11,7 +11,9 @@ const fetchSomething = async () => {
     });
 };
 
+const promiseValue = fetchSomething();
+
 export default function Page () {
-    const someThing = use(fetchSomething());
+    const someThing = use(promiseValue);
     return (<>Yo client {someThing}</>);
 }

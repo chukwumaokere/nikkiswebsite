@@ -22,8 +22,8 @@ export default function Home () {
                     </div>
                     <div className='lg:flex lg:w-1/2 lg:h-full relative'>
                         <Image
-                            fill
-                            priority
+                            fill={true}
+                            priority={true}
                             placeholder='empty'
                             sizes='(max-width: 768px) 100vw, 50vw'
                             style={{objectFit: 'contain'}}

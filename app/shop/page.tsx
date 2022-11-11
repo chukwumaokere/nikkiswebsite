@@ -30,15 +30,17 @@ export default function Page () {
         return (
             <div className='h-full flex lg:flex-col'>
                 <div className='flex flex-col'>
-                    <Subheader>Collections</Subheader>
+                    <Link href='/shop/collections'>
+                        <Subheader>Collections</Subheader>
+                    </Link>
                     <div className='flex flex-col lg:flex-row gap-2 h-full'>
                         {collections.map((collection) => (
                             <Link key={collection.id} href={`/shop/collections/${collection.slug}`} className='relative w-28 h-28'>
                                 <Image
                                     style={{objectFit: 'contain'}}
                                     sizes='(max-width: 768px) 100vw, 50vw'
-                                    priority
-                                    fill
+                                    priority={true}
+                                    fill={true}
                                     alt={`${collection.name} collection image`}
                                     src={collection.collectionImage?.url || ''} />
                             </Link>
@@ -46,15 +48,17 @@ export default function Page () {
                     </div>
                 </div>
                 <div className='flex flex-col'>
-                    <Subheader>Products</Subheader>
+                    <Link href='/shop/products'>
+                        <Subheader>Products</Subheader>
+                    </Link>
                     <div className='flex flex-col lg:flex-row gap-2 h-full'>
                         {products.map((product) => (
                             <Link key={product.id} href={`/shop/products/${product.slug}`} className='relative w-28 h-28'>
                                 <Image
                                     style={{objectFit: 'contain'}}
                                     sizes='(max-width: 768px) 100vw, 50vw'
-                                    priority
-                                    fill
+                                    priority={true}
+                                    fill={true}
                                     alt={`${product.name} product image`}
                                     src={product.productImage?.url || ''} />
                             </Link>
