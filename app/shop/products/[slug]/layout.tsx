@@ -48,7 +48,7 @@ export default function Layout ({params, children}: Props): React.ReactElement {
                 <Breadcrumbs />
             </div>
             <div className='flex lg:flex-row gap-4 mb-2'>
-                <div className='flex flex-col lg:flex-row gap-4'>
+                {/* <div className='flex flex-col lg:flex-row gap-4'>
                     <div className='flex lg:flex-col w-full h-full'>
                         <ImageWithCarousel images={product?.images} productName={product?.name} productImage={product?.productImage?.url}>
                             <div className='flex lg:flex-col gap-4'>
@@ -79,16 +79,8 @@ export default function Layout ({params, children}: Props): React.ReactElement {
                             </div>
                         </ImageWithCarousel>
                     </div>
-                </div>
-                <div className='flex lg:flex-col gap-2'>
-                    <Header>
-                        {product?.name}
-                    </Header>
-                    <Subheader>
-                        {product?.description}
-                    </Subheader>
-                    {children}
-                </div>
+                </div> */}
+                {children}
             </div>
         </div>
     );

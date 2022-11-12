@@ -15,5 +15,7 @@ const promiseValue = fetchSomething();
 
 export default function BuySection () {
     const someThing = use(promiseValue);
-    return (<>Yo client {someThing}</>);
+    return (
+        <>Yo client {someThing}</>
+    );
 }
