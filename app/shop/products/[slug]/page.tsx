@@ -2,7 +2,7 @@ import Header from '@/app/Header';
 import Subheader from '@/app/Subheader';
 import prisma from '@/lib/db';
 import Image from 'next/image';
-import { use } from 'react';
+import { Suspense, use } from 'react';
 import Breadcrumbs from '@/app/Breadcrumbs';
 import ParagraphText from '@/app/ParagraphText';
 import Link from 'next/link';
@@ -86,7 +86,9 @@ export default function Page ({params}: Props) {
                 <Subheader>
                     {product?.description}
                 </Subheader>
-                <BuySection />
+                <Suspense fallback={<div>Loading Buy Section...</div>}>
+                    <BuySection />
+                </Suspense>
             </div>
         </div>
     </>);
