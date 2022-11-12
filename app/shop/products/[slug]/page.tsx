@@ -8,6 +8,7 @@ import ParagraphText from '@/app/ParagraphText';
 import Link from 'next/link';
 import ImageWithCarousel from './ImageWithCarousel';
 import BuySection from './BuySection';
+import Loading from './loading';
 
 async function getProduct (slug: string) {
     const product = await prisma.product.findFirst({
@@ -49,34 +50,38 @@ export default function Page ({params}: Props) {
         <div className='flex lg:flex-row gap-4 mb-2'>
             <div className='flex flex-col lg:flex-row gap-4'>
                 <div className='flex lg:flex-col w-full h-full'>
-                    <ImageWithCarousel images={product?.images} productName={product?.name} productImage={product?.productImage?.url}>
-                        <div className='flex lg:flex-col gap-4'>
-                            <div className='flex lg:flex-col'>
-                                <Subheader>Artist&quot;s Descrption</Subheader>
-                                <ParagraphText>Just some thoughts about this product</ParagraphText>
-                            </div>
-                            <div className='flex lg:flex-col'>
-                                <Subheader>Materials Used</Subheader>
-                                <ParagraphText>Google Chrome OMEGALUL</ParagraphText>
-                            </div>
-                            <div className='flex lg:flex-col'>
-                                <Subheader>Related Products</Subheader>
-                                <div className='flex flex-col lg:flex-row gap-2 h-full'>
-                                    {relatedProducts.map((product) => (
-                                        <Link key={product.id} href={`/shop/products/${product.slug}`} className='relative w-28 h-28'>
-                                            <Image
-                                                style={{objectFit: 'contain'}}
-                                                sizes='(max-width: 768px) 100vw, 50vw'
-                                                priority={true}
-                                                fill={true}
-                                                alt={`${product.name} product image`}
-                                                src={product.productImage?.url || ''} />
-                                        </Link>
-                                    ))}
+                    <Suspense fallback={<Loading />}>
+                        <ImageWithCarousel images={product?.images} productName={product?.name} productImage={product?.productImage?.url}>
+                            <div className='flex lg:flex-col gap-4'>
+                                <div className='flex lg:flex-col'>
+                                    <Subheader>Artist&quot;s Descrption</Subheader>
+                                    <ParagraphText>Just some thoughts about this product</ParagraphText>
+                                </div>
+                                <div className='flex lg:flex-col'>
+                                    <Subheader>Materials Used</Subheader>
+                                    <ParagraphText>Google Chrome OMEGALUL</ParagraphText>
+                                </div>
+                                <div className='flex lg:flex-col'>
+                                    <Subheader>Related Products</Subheader>
+                                    <div className='flex flex-col lg:flex-row gap-2 h-full'>
+                                        <Suspense fallback={<Loading />}>
+                                            {relatedProducts.map((product) => (
+                                                <Link key={product.id} href={`/shop/products/${product.slug}`} className='relative w-28 h-28'>
+                                                    <Image
+                                                        style={{objectFit: 'contain'}}
+                                                        sizes='(max-width: 768px) 100vw, 50vw'
+                                                        priority={true}
+                                                        fill={true}
+                                                        alt={`${product.name} product image`}
+                                                        src={product.productImage?.url || ''} />
+                                                </Link>
+                                            ))}
+                                        </Suspense>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </ImageWithCarousel>
+                        </ImageWithCarousel>
+                    </Suspense>
                 </div>
             </div>
             <div className='flex lg:flex-col gap-2'>
@@ -86,7 +91,7 @@ export default function Page ({params}: Props) {
                 <Subheader>
                     {product?.description}
                 </Subheader>
-                <Suspense fallback={<div>Loading Buy Section...</div>}>
+                <Suspense fallback={<div>Loading Buy section...</div>}>
                     <BuySection />
                 </Suspense>
             </div>
