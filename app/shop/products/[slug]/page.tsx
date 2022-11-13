@@ -40,6 +40,8 @@ export default function Page ({params}: Props) {
     const product = use(getProduct(params.slug));
     const relatedProducts = use(getRelatedProducts(params.slug));
 
+    console.log({product});
+
     return (
         <>
             <div className='flex flex-col lg:flex-row gap-4'>
@@ -83,7 +85,7 @@ export default function Page ({params}: Props) {
                 </Subheader>
                 <span>Something static loading beside a loading client component</span>
                 <div className='flex flex-col'>
-                    <Suspense fallback={<div>Loading Buy Section...</div>}>
+                    <Suspense fallback={<span>Loading...</span>}>
                         <BuySection />
                     </Suspense>
                     <span>Something next to it</span>

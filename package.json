@@ -11,7 +11,7 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
-    "@next/font": "^13.0.0",
+    "@next/font": "^13.0.3",
     "@prisma/client": "^4.5.0",
     "class-variance-authority": "^0.2.4",
     "classnames": "^2.3.2",

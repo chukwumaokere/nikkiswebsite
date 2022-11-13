@@ -12,7 +12,7 @@ type CarouselProps = {
 
 export default function ImageWithCarousel ({images, productImage, productName, children}: CarouselProps): React.ReactElement {
     const [currentImage, setCurrentImage] = useState<string>(productImage || '');
-    const onImageClick = useCallback((e: SyntheticEvent) => {
+    const onImageClick = useCallback((e: any) => {
         console.log(e);
         setCurrentImage(e.target['data-loaded-src']);
     }, []);
