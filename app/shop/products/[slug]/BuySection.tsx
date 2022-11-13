@@ -1,6 +1,6 @@
 'use client';
 
-import { use, useMemo } from 'react';
+import { use, Suspense } from 'react';
 
 const fetchSomething = async () => {
     return new Promise((resolve, reject) => {
@@ -15,5 +15,9 @@ const promiseValue = fetchSomething();
 
 export default function BuySection () {
     const someThing = use(promiseValue);
-    return (<>Yo client {someThing}</>);
+    return (
+        <Suspense fallback={<div>Loading section...</div>}>
+            <>Yo client {someThing}</>
+        </Suspense>
+    );
 }
