@@ -40,8 +40,6 @@ export default function Page ({params}: Props) {
     const product = use(getProduct(params.slug));
     const relatedProducts = use(getRelatedProducts(params.slug));
 
-    console.log({product});
-
     return (
         <>
             <div className='flex flex-col lg:flex-row gap-4'>
